@@ -74,13 +74,13 @@ body {
 }
 
 
-header {
+.header {
     margin-top: 89px;
     margin-bottom: 55px;
 
 }
 
-header img {
+.header img {
     max-width: 64px;
     width: 100%;
 }
@@ -98,7 +98,7 @@ nav a:hover {
 }
 
 
-main {
+.page {
     margin-bottom: 71px;
 }
 
@@ -203,11 +203,11 @@ main {
     padding-top: 29px;
 }
 
-footer {
+.footer {
     margin-bottom: 129px;
 }
 
-article {
+.footer article {
     gap: 24px;
     max-width: 350px;
     width: 100%;
