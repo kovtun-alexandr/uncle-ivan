@@ -69,14 +69,9 @@ body {
     gap: 30px;
 }
 
-.mb-129 {
-    margin-bottom: 129px;
-}
-
-
 .header {
-    margin-top: 89px;
-    margin-bottom: 55px;
+    padding-top: 89px;
+    padding-bottom: 55px;
 
 }
 
@@ -90,7 +85,7 @@ nav {
 }
 
 nav a {
-    transition: clor .3s ease;
+    transition: color .3s ease;
 }
 
 nav a:hover {
@@ -109,8 +104,6 @@ nav a:hover {
 .hero-img {
     width: 100%;
     aspect-ratio: 730/300;
-    background-color: var(--c-bacground);
-    overflow: hidden;
 }
 
 .hero-img img {
@@ -148,6 +141,7 @@ nav a:hover {
 .btn {
     font-weight: 700;
     font-size: 14px;
+    text-transform: uppercase;
     line-height: 1.7;
     letter-spacing: 4.37px;
     padding: 12px 36px;
@@ -182,7 +176,7 @@ nav a:hover {
     line-height: 24px;
     color: var(--c-white);
     margin-bottom: 8px;
-    transition: clor .3s ease;
+    transition: color .3s ease;
 }
 
 .news a:hover {
@@ -204,7 +198,7 @@ nav a:hover {
 }
 
 .footer {
-    margin-bottom: 129px;
+    padding-bottom: 129px;
 }
 
 .footer article {
@@ -214,11 +208,11 @@ nav a:hover {
 }
 
 .footer-img {
+    display: flex;
+    align-items: flex-start;
     max-width: 100px;
     width: 100%;
     aspect-ratio: 100/127;
-    background-color: var(--c-bacground);
-    overflow: hidden;
 }
 
 .footer-img img {
@@ -240,7 +234,7 @@ nav a:hover {
     line-height: 1.33;
     color: var(--c-dark-space-blue);
     margin-bottom: 9px;
-    transition: clor .3s ease;
+    transition: color .3s ease;
 
 }
 
