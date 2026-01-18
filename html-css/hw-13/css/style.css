@@ -15,6 +15,7 @@
 :root {
     --c-white: hsl(0, 0%, 100%);
     --c-black: hsl(0, 0%, 0%);
+    --c-bg: #e8e8e8;
     --o-transition: all 0.3s ease-in-out;
 }
 
@@ -118,12 +119,16 @@ body {
 
 /* HERO */
 .hero {
+    display: flex;
     position: relative;
     margin-block-start: -169px;
     margin-block-end: 160px;
+    aspect-ratio: 1905/860;
 
     img {
+        flex-grow: 1;
         width: 100%;
+        background-color: var(--c-bg);
     }
 
     h1 {
@@ -137,8 +142,6 @@ body {
         color: var(--c-white);
         border: 2px solid var(--c-white);
         padding: 40px;
-        /* margin-block-start: 226px; */
-        /* margin-block-end: 146px; */
     }
 }
 
@@ -148,7 +151,15 @@ body {
 }
 
 .image-inner {
-    max-width: 730px;
+    display: flex;
+    max-width: 750px;
+    aspect-ratio: 730/500;
+
+    img {
+        flex-grow: 1;
+        background-color: var(--c-bg);
+        object-fit: contain;
+    }
 }
 
 .desctiption {
@@ -202,8 +213,14 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
     gap: 30px;
 
+    li,
+    article {
+        display: flex;
+    }
+
     a {
         display: flex;
+        flex-grow: 1;
         width: 100%;
         flex-direction: column;
         position: relative;
@@ -211,7 +228,9 @@ body {
         overflow: hidden;
 
         img {
+            height: 100%;
             transition: var(--o-transition);
+            background-color: var(--c-bg);
         }
 
         &:hover {
@@ -224,6 +243,16 @@ body {
             img {
                 transform: scale(1.12);
             }
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.601863) 100%);
+            z-index: 1;
         }
 
         &::after {
@@ -252,6 +281,7 @@ body {
         left: 0;
         bottom: 0;
         transform: translate(40px, -32px);
+        z-index: 2;
     }
 }
 
@@ -295,4 +325,10 @@ body {
     width: 24px;
     height: 24px;
     fill: currentColor;
+    aspect-ratio: 1;
+
+    use {
+        object-fit: contain;
+    }
+
 }
