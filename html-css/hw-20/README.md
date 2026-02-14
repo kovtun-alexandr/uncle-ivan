@@ -20,7 +20,7 @@ Add a screenshot of your solution to `./assets/images/` and update the path belo
 ## Links
 
 - Repository: (add your GitHub repo URL)
-- Live Site: (add your GitHub Pages / Netlify / Vercel URL)
+- Live Site: https://kovtun-alexandr.github.io/uncle-ivan/html-css/hw-20/index.html
 
 ## Built with
 
