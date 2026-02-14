@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Interactive card details form</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header></header>
+    <main class="main">
+      <div class="container">
+        <div class="form-wrap">
+          <div class="view-card">
+            <div class="card-front">
+              <div class="img-wrap"></div>
+              <img src="./assets/images/card-front.png" alt="image front card">
+              <div class="info">
+                <h2 class="card-number">0000 0000 0000 0000</h2>
+                <div class="bottom">
+                  <div class="name">Jane Appleseed</div>
+                  <div class="date"><span class="month">00</span>/<span class="year">00</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-back">
+              <img src="./assets/images/card-back.png" alt="image back card">
+              <div class="cvc">000</div>
+            </div>
+          </div>
+          <div class="form">
+            <form action="" class="form-detail">
+              <div class="row">
+                <label for="name">
+                  Cardholder Name
+                </label>
+                <input type="text" id="name" mane="fullName" placeholder="e.g. Jane Appleseed">
+                <div class="text">Sorry, you did not enter a name.</div>
+              </div>
+              <div class="row">
+                <label for="card">
+                  Card Number
+                </label>
+                <input type="number" id="card" mane="cardNumber" placeholder="e.g. 1234 5678 9123 0000">
+                <div class="text">Sorry, wrong format.</div>
+              </div>
+              <div class="row">
+                <div class="row-inner">
+                  <label for="month">
+                    Exp. Date (MM/YY)
+                  </label>
+                  <div class="sub-row">
+                    <div class="">
+                      <input type="number" id="month" mane="cardMonth" min="1" max="12"
+                        oninput="if (this.value.length > 2) this.value = this.value.slice(0, 2);" placeholder="MM">
+                    </div>
+                    <div class="">
+                      <input type="number" mane="cardYear" min="0" max="99"
+                        oninput="if (this.value.length > 2) this.value = this.value.slice(0, 2);" placeholder="YY">
+                    </div>
+                  </div>
+                  <div class="text">Can’t be blank</div>
+                </div>
+                <div class="row-inner">
+                  <label for="cvc">
+                    CVC
+                  </label>
+                  <input type="number" id="cvc" mane="cardVC" type="number" min="0" max="999"
+                    oninput="if (this.value.length > 3) this.value = this.value.slice(0, 3);" placeholder="e.g. 123">
+                  <div class="text">Can’t be blank</div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="btn" type="submit">Confirm</button>
+              </div>
+            </form>
+            <div class="success">
+              <div>
+                <h2>Thank you!</h2>
+                <p>We've added your card details</p>
+              </div>
+              <a class="btn" href="#">Continue</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <fooret></fooret>
+  </div>
+</body>
+
+</html>
