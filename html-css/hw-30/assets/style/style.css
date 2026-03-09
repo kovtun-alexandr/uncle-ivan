@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
+*::before, *::after,
+*::before::before,
+*::before::after,
+*::after::before,
+*::after::after {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+html,
+body {
+  line-height: 1;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* FORM */
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input,
+textarea {
+  width: 100%;
+}
+
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.35;
+  height: 100vh;
+  color: #CEE3E9;
+  background: #202733;
+}
+
+.container {
+  max-width: 1470px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 48px 74px;
+}
+@media (max-width: 560px) {
+  div {
+    padding: 40px 24px 64px;
+  }
+}
+div {
+  background-color: #313A48;
+  max-width: 540px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 30px 50px 80px rgba(0, 0, 0, 0.100202);
+  position: relative;
+}
+div button {
+  position: absolute;
+  border: 2px solid #52FFA8;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  left: 50%;
+  bottom: 0;
+  background-color: #52FFA8;
+  transform: translate(-50%, 50%);
+  transition: 0.3s;
+}
+div button:hover {
+  background-color: #CEE3E9;
+  box-shadow: 0px 0px 3px 3px rgba(82, 255, 168, 0.3);
+}
+div span {
+  color: #52FFA8;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+div h2 {
+  font-size: 28px;
+  line-height: 1.35;
+  text-align: center;
+  letter-spacing: -0.3px;
+  position: relative;
+  padding-bottom: 40px;
+}
+@media (max-width: 560px) {
+  div h2 {
+    padding-bottom: 32px;
+    font-size: 24px;
+  }
+}
+div h2:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 52px;
+  height: 16px;
+  bottom: 0;
+  left: 50%;
+  background: #313A48 url(./../../assets/images/icons/pause.svg) no-repeat center;
+  transform: translate(-50%, 50%);
+  z-index: 1;
+}
+div h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  background-color: #4F5D74;
+  opacity: 0.8;
+}/*# sourceMappingURL=style.css.map */
