@@ -2,6 +2,10 @@
 
 A responsive web application that displays random advice quotes with a modern, accessible design.
 
+## 🔗 Live Demo
+
+[View Project](https://kovtun-alexandr.github.io/uncle-ivan/html-css/hw-30/index.html)
+
 ## Overview
 
 This project showcases a clean and interactive advice generator interface with a focus on responsive design and modern CSS techniques. Users can generate random advice quotes by clicking a dice button.
