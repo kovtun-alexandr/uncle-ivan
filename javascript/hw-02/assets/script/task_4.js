@@ -1,5 +1,3 @@
-import { priceRoundedDown } from "./task_2.js"
-
 // ## 4. Функціональна архітектура чека
 // Вам потрібно розбити процес підрахунку замовлення на маленькі логічні кроки (функції), які можна буде використовувати повторно.
 
@@ -11,23 +9,14 @@ import { priceRoundedDown } from "./task_2.js"
 // **Фінальний крок:**
 // Викличте ці три функції так, щоб результат роботи перших двох (доставка та вартість товарів) додався між собою і був переданий у третю функцію для формування фінального повідомлення.
 
-function getDeliveryCost() {
-    return 80
+export function getDeliveryCost(cost) {
+    return cost
 }
 
-function calculateProductCost(price, quantity) {
+export function calculateProductCost(price, quantity) {
     return price * quantity
 }
 
-function formatOrderTotal(total) {
+export function formatOrderTotal(total) {
     return `Загальна сума замовлення: ${total} грн`
 }
-
-//можна записати так:
-//const orderTotal = getDeliveryCost() + calculateProductCost(priceRoundedDown, 3)
-
-//або так:
-const deliveryCost = getDeliveryCost()
-const productCost = calculateProductCost(priceRoundedDown, 3)
-const orderTotal = deliveryCost + productCost
-export const finalMessage = formatOrderTotal(orderTotal)
