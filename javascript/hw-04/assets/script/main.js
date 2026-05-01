@@ -126,7 +126,7 @@ function printSchedule(startHour, sessionCount, durationMinutes) {
             break
         }
 
-        console.log(`Сеанс ${i}: ${startHour}:${startMinute} – ${endHour}:${endMinute}`)
+        console.log(`Сеанс ${i}: ${startHour}:${startMinute < 10 ? "0" + startMinute : startMinute} – ${endHour}:${endMinute < 10 ? "0" + endMinute : endMinute}`)
         currentTime += durationMinutes
     }
 }
