@@ -11,10 +11,12 @@
 // _Методи та властивості: `trim()`, `toUpperCase()`, `startsWith()`, `length`, `includes()`_
 
 function flightRegistration() {
-    const flightCode = prompt("Введіть код рейсу:").trim().toUpperCase()
+    const flightCode = prompt("Введіть код рейсу:")?.trim().toUpperCase()
     let message = ""
 
-    if (!flightCode.startsWith("PS")) {
+    if (!flightCode) {
+        message = "Ви натиснули кнопку скасування або не ввели код рейсу"
+    } else if (!flightCode.startsWith("PS")) {
         message = "Код рейсу недійсний: невірний префікс авіакомпанії"
     } else if (flightCode.length !== 6) {
         message = "Код рейсу недійсний: невірна довжина"
