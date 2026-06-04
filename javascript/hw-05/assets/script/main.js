@@ -1,86 +1,171 @@
-const inventory = [
-    { id: 1, name: "Laptop Pro 16", price: 45000, category: "Laptops", stock: 5 },
-    { id: 2, name: "Wireless Mouse", price: 1200, category: "Accessories", stock: 15 },
-    { id: 3, name: "Gaming Monitor", price: 12000, category: "Monitors", stock: 0 },
-    { id: 4, name: "USB-C Cable", price: 450, category: "Accessories", stock: 50 },
-    { id: 5, name: "Mechanical Keyboard", price: 3500, category: "Accessories", stock: 8 },
-    { id: 6, name: "Smartphone X", price: 28000, category: "Phones", stock: 3 },
-];
+// глобальні фунціі виніс за межі завдань, щоб не заважали а при потребі можна було їми скористатись
+const getHours = (minutes) => Math.floor(minutes / 60)
+const getMinutes = (minutes) => minutes % 60
+const formattedMinutes = (minutes) => minutes < 10 ? "0" + minutes : minutes
+const sum = (a, b) => a + b
 
-console.log(inventory)
+// 1) - Оголоси функцію `formatDuration(minutes)` через **function declaration**.
+//    - Всередині функції:
+//      - Обчисли кількість повних годин (`Math.floor`) та хвилин, що залишились (`%`).
+//      - Якщо годин `0` — повертай лише `"45 хв"` (тільки хвилини).
+//      - В іншому випадку — повертай `"2 год 15 хв"` (і те, і те).
+//    - Виклич функцію з кількома значеннями і виведи результат у `console.log`:
+//      - `formatDuration(135)` → `"2 год 15 хв"`
+//      - `formatDuration(60)` → `"1 год 00 хв"`
+//      - `formatDuration(45)` → `"45 хв"`
 
-// 1)
-// Створіть змінну `availableAccessories`.
-// Використовуючи метод `filter`, виберіть з масиву `inventory` товари, у яких `category === "Accessories"` і `stock > 0`.
-// Виведіть результат у консоль.
+//    _Оператори та методи: `/`, `%`, `Math.floor()`, `if/else`, template literals, `return`_
 
-const availableAccessories = inventory.filter(item => item.category === "Accessories" && item.stock > 0)
+function displayTime(hours, minutes) {
+    !hours ?
+        console.log(`"${formattedMinutes(minutes)} хв"`)
+        : console.log(`"${hours} год ${formattedMinutes(minutes)} хв"`)
+}
 
-console.log(availableAccessories)
+function formatDuration(minutes) {
+    displayTime(getHours(minutes), getMinutes(minutes))
+}
 
-// 2)
-// Створіть масив `salePrices` за допомогою методу `map`.
-// Якщо `price > 5000`, нова ціна = `price * 0.85`, інакше ціна залишається без змін.
-// Результатом `map` має бути рядок: `` `${item.name} - нова ціна: ${finalPrice} грн` ``.
-// Виведіть отриманий масив у консоль.
+formatDuration(135)
+formatDuration(60)
+formatDuration(45)
 
-const salePrices = inventory.map(item => {
-    const finalPrice = item.price > 5000 ? item.price * 0.85 : item.price
-    return `${item.name} - нова ціна: ${finalPrice} грн`
-})
+// 2) - Оголоси функцію `validateSlug(title)` через **function declaration**.
+//    - Перед перевірками обріжи зайві пробіли по краях (`trim()`).
+//    - Логіка з `if / else if / else`:
+//      1. Якщо очищений рядок має `length === 0` — повертай: `"Помилка: назва порожня"`.
+//      2. Інакше якщо `length > 50` — повертай: `"Помилка: назва задовга"`.
+//      3. Інакше якщо містить пробіл (`includes(" ")`) — повертай: `"Помилка: пробіли заборонені, використай дефіс"`.
+//      4. Інакше — повертай: `` `Slug прийнято: ${назва у нижньому регістрі}` ``.
+//    - Виклич функцію і виведи результат у `console.log`:
+//      - `validateSlug("  ")` → `"Помилка: назва порожня"`
+//      - `validateSlug("the dark knight")` → `"Помилка: пробіли заборонені, використай дефіс"`
+//      - `validateSlug("The-Dark-Knight")` → `"Slug прийнято: the-dark-knight"`
 
-console.log(salePrices)
+//    _Методи та властивості: `trim()`, `length`, `includes()`, `toLowerCase()`, `if/else if/else`, template literals, `return`_
 
-// 3)
-// За допомогою `some` перевірте, чи є в магазині хоча б один товар з `stock === 0`. Виведіть результат (`true/false`).
-// За допомогою `every` перевірте, чи всі товари коштують більше `100` грн.
-// За допомогою `find` знайдіть об'єкт товару, у якого `id === 3`.
-// Виведіть результат у консоль.
+function displayMessage(message) {
+    console.log(message)
+}
 
-const hasOutOfStockItem = inventory.some(item => item.stock === 0)
-console.log("Чи є в магазині товар з `stock === 0`", hasOutOfStockItem)
+// Зробив окрему функцію для виводу повідомлення, але потім перчитав умову і побачив що не викоритсав `return` і вирішив шо треба переробити використовуючи `return`!
+// function receiveMessage(message) {
+//     if (message.length === 0) {
+//         displayMessage("Помилка: назва порожня")
+//     } else if (message.length > 50) {
+//         displayMessage("Помилка: назва задовга")
+//     } else if (message.includes(" ")) {
+//         displayMessage("Помилка: пробіли заборонені, використай дефіс")
+//     } else {
+//         displayMessage(`Slug прийнято: ${message.toLowerCase()}`)
+//     }
+// }
 
-const allItemsExpensive = inventory.every(item => item.price > 100)
-console.log("Чи всі товари коштують більше 100 грн", allItemsExpensive)
+// function validateSlug(title) {
+//     receiveMessage(title.trim())
+// }
 
-const itemWithId3 = inventory.find(item => item.id === 3)
-console.log(itemWithId3)
-
-// 4)
-// Створіть змінну `totalInventoryValue`.
-// Використовуйте `reduce`, щоб пройти по масиву `inventory`.
-// На кожній ітерації додавайте до акумулятора результат множення `item.price * item.stock`.
-// Виведіть фінальну суму у консоль з повідомленням: `"Загальна вартість складу: ... грн"`.
-
-const totalInventoryValue = inventory.reduce((acc, item) => acc + (item.price * item.stock), 0)
-
-console.log(`Загальна вартість складу: ${totalInventoryValue} грн`)
-
-// 5)
-// Оголосіть об'єкт `storeManager`.
-// Додайте йому властивість `items`, куди скопіюйте масив `inventory`.
-// Додайте метод `updateStock(productId, newStock)`:
-//     Метод має знайти товар за `id` у масиві `this.items` і змінити його `stock` на `newStock`.
-//     Якщо товар знайдено, вивести: `"Запас товару [назва] оновлено до [кількість]"`.
-// Додайте метод `printInventory()`:
-//     Він має вивести в консоль назву та кількість кожного товару у зручному вигляді (використовуй `forEach`).
-// Перевірте роботу: викличте `storeManager.updateStock(1, 10)` та `storeManager.printInventory()`.
-
-const storeManager = {
-    items: [...inventory],
-    updateStock(productId, newStock) {
-        const item = this.items.find(item => item.id === productId);
-        if (item) {
-            item.stock = newStock;
-            console.log(`Запас товару ${item.name} оновлено до ${newStock}`);
-        }
-    },
-    printInventory() {
-        this.items.forEach(item => {
-            console.log(`${item.name} - кількість: ${item.stock}`);
-        });
+function receiveMessage(message) {
+    if (message.length === 0) {
+        return "Помилка: назва порожня"
+    } else if (message.length > 50) {
+        return "Помилка: назва задовга"
+    } else if (message.includes(" ")) {
+        return "Помилка: пробіли заборонені, використай дефіс"
+    } else {
+        return `Slug прийнято: ${message.toLowerCase()}`
     }
 }
 
-storeManager.updateStock(1, 10)
-storeManager.printInventory()
+// міг би просто вивести ресультат в консоль, але в мене була готова функція, не викидати ж її)))
+function validateSlug(title) {
+    displayMessage(receiveMessage(title.trim()))
+}
+
+validateSlug(" ")
+validateSlug("the dark knight")
+validateSlug("The-Dark-Knight")
+
+// 3) - Оголоси функцію `calcTicketPrice(basePrice, age, hasStudentCard)` через **function declaration**.
+//    - Якщо `basePrice` не передано — використай значення `200` за допомогою оператора `??`.
+//    - Логіка `if / else if / else`:
+//      1. Якщо `age < 7` — квиток безкоштовний (`0 грн`), знижка `"дитяча"`.
+//      2. Інакше якщо `age >= 65` — знижка 50%.
+//      3. Інакше якщо `hasStudentCard` — знижка 30%.
+//      4. Інакше — повна ціна, знижка `"відсутня"`.
+//    - Виводь у консоль: `` `Квиток: ${finalPrice} грн (знижка: ${discountName})` ``
+//    - Виклич функцію кілька разів:
+//      - `calcTicketPrice(200, 5, false)` → `"Квиток: 0 грн (знижка: дитяча)"`
+//      - `calcTicketPrice(200, 70, false)` → `"Квиток: 100 грн (знижка: пенсійна)"`
+//      - `calcTicketPrice(200, 22, true)` → `"Квиток: 140 грн (знижка: студентська)"`
+//      - `calcTicketPrice(undefined, 30, false)` → `"Квиток: 200 грн (знижка: відсутня)"`
+
+//    _Оператори та методи: `??`, `if/else if/else`, арифметика (`*`, `-`), template literals, `return` або `console.log`_
+
+function printTicket(finalPrice, discountName) {
+    console.log(`Квиток: ${finalPrice} грн (знижка: ${discountName})`)
+}
+
+function isThereDiscount(age, price, hasStudentCard) {
+    let calculatedPrice = 0
+
+    if (age < 7) {
+        printTicket(calculatedPrice, "дитяча")
+    } else if (age >= 65) {
+        calculatedPrice = price * 0.5
+        printTicket(calculatedPrice, "пенсійна")
+    } else if (hasStudentCard) {
+        calculatedPrice = price * 0.7
+        printTicket(calculatedPrice, "студентська")
+    } else {
+        printTicket(price, "відсутня")
+    }
+}
+
+function calcTicketPrice(basePrice, age, hasStudentCard) {
+    const price = basePrice ?? 200
+
+    isThereDiscount(age, price, hasStudentCard)
+}
+
+calcTicketPrice(200, 5, false)
+calcTicketPrice(200, 70, false)
+calcTicketPrice(200, 22, true)
+calcTicketPrice(undefined, 30, false)
+
+// 4) - Оголоси функцію `printSchedule(startHour, sessionCount, durationMinutes)` через **function declaration**.
+//    - Переведи `startHour` у хвилини від початку доби (`startHour * 60`).
+//    - У циклі `for` від `1` до `sessionCount` включно:
+//      - Обчисли час початку і кінця поточного сеансу.
+//      - Якщо час початку `>= 23 * 60` — зупини цикл через `break`.
+//      - Інакше — виведи рядок: `` `Сеанс ${i}: ${startH}:${startM} – ${endH}:${endM}` ``
+//      - Зрушити поточний час на `durationMinutes` для наступної ітерації.
+//    - Для форматування хвилин: якщо хвилин менше 10 — додай `"0"` спереду (напр. `"09"` замість `"9"`).
+//    - Виклич функцію:
+//      - `printSchedule(10, 5, 105)` — сеанси з 10:00, по 1 год 45 хв, максимум 5 шт.
+
+//    _Оператори та методи: `for`, `break`, `%`, `Math.floor()`, `if`, template literals, конкатенація рядків_
+
+function displaySessionTime(sessionNumber, startHour, startMinute, endHour, endMinute) {
+    console.log(`Сеанс ${sessionNumber}: ${startHour}:${formattedMinutes(startMinute)} – ${endHour}:${formattedMinutes(endMinute)}`)
+}
+
+function printSchedule(startHour, sessionCount, durationMinutes) {
+    let currentTime = startHour * 60
+
+    for (let i = 1; i <= sessionCount; i++) {
+        const startHour = getHours(currentTime)
+        const startMinute = getMinutes(currentTime)
+        const endHour = getHours(sum(currentTime, durationMinutes))
+        const endMinute = getMinutes(sum(currentTime, durationMinutes))
+
+        if (currentTime >= 23 * 60) {
+            break
+        }
+
+        displaySessionTime(i, startHour, startMinute, endHour, endMinute)
+        currentTime += durationMinutes
+    }
+}
+
+printSchedule(10, 5, 105)
