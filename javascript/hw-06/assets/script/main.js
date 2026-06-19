@@ -24,10 +24,10 @@ console.log(availableAccessories)
 // Результатом `map` має бути рядок: `` `${item.name} - нова ціна: ${finalPrice} грн` ``.
 // Виведіть отриманий масив у консоль.
 
-const salePrices = inventory.map(item => {
-    const finalPrice = item.price > 5000 ? item.price * 0.85 : item.price
-    return `${item.name} - нова ціна: ${finalPrice} грн`
-})
+const salePrices = inventory.map(item =>
+    item.price > 5000
+        ? `${item.name} - нова ціна: ${item.price * 0.85} грн`
+        : `${item.name} - ціна: ${item.price} грн`)
 
 console.log(salePrices)
 
@@ -66,8 +66,10 @@ console.log(`Загальна вартість складу: ${totalInventoryVal
 //     Він має вивести в консоль назву та кількість кожного товару у зручному вигляді (використовуй `forEach`).
 // Перевірте роботу: викличте `storeManager.updateStock(1, 10)` та `storeManager.printInventory()`.
 
+const cloneInventory = structuredClone(inventory);
+
 const storeManager = {
-    items: [...inventory],
+    items: cloneInventory,
     updateStock(productId, newStock) {
         const item = this.items.find(item => item.id === productId);
         if (item) {
