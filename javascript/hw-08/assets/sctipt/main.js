@@ -7,6 +7,7 @@ const mainSection = document.querySelector('main section')
 const productsContainer = document.createElement('div')
 const categoryButtonsContainer = document.createElement('div')
 
+productsContainer.classList.add('products-container')
 categoryButtonsContainer.classList.add('category-buttons')
 mainSection.append(categoryButtonsContainer, productsContainer)
 createCategoryButtons(categories, categoryButtonsContainer)

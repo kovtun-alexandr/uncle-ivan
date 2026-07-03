@@ -1,10 +1,10 @@
 export class Products {
-    constructor(products, sectionSelector, filterButtons) {
+    constructor(products, productsContainer, filterButtons) {
         this.products = products
         this.filteredProducts = products
-        this.sectionSelector = sectionSelector
+        this.productsContainer = productsContainer
         this.filterButtons = filterButtons
-        this.productsContainer = document.createElement('div')
+        this.productsList = document.createElement('div')
         this.render()
         this.bindEvents()
     }
@@ -18,7 +18,7 @@ export class Products {
             })
         })
 
-        this.productsContainer.addEventListener('mouseover', (event) => {
+        this.productsList.addEventListener('mouseover', (event) => {
             const card = event.target.closest('.product-card')
 
             if (!card) return
@@ -37,12 +37,12 @@ export class Products {
     }
 
     render() {
-        this.sectionSelector.innerHTML = ''
-        this.productsContainer.classList.add('products-container')
+        this.productsList.innerHTML = ''
+        this.productsList.classList.add('products-list')
 
         this.filteredProducts.forEach((product) => {
             const productCard = document.createElement('div')
-            productCard.classList.add('product-card', 'active')
+            productCard.classList.add('product-card')
 
             productCard.dataset.category = product.category
             productCard.dataset.price = product.price
@@ -55,9 +55,9 @@ export class Products {
             productTitle.textContent = `${product.brand} ${product.model}`
 
             productCard.append(productImage, productTitle)
-            this.productsContainer.appendChild(productCard)
+            this.productsList.appendChild(productCard)
         });
 
-        this.sectionSelector.appendChild(this.productsContainer)
+        this.productsContainer.appendChild(this.productsList)
     }
 }
