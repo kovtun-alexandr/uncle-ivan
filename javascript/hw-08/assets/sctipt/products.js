@@ -47,14 +47,19 @@ export class Products {
             productCard.dataset.category = product.category
             productCard.dataset.price = product.price
 
+            const productImageWrapper = document.createElement('div')
+            productImageWrapper.classList.add('product-image-wrapper')
+
             const productImage = document.createElement('img')
             productImage.src = product.img
             productImage.alt = `${product.brand} ${product.model}`
 
+            productImageWrapper.appendChild(productImage)
+
             const productTitle = document.createElement('h3')
             productTitle.textContent = `${product.brand} ${product.model}`
 
-            productCard.append(productImage, productTitle)
+            productCard.append(productImageWrapper, productTitle)
             this.productsList.appendChild(productCard)
         });
 

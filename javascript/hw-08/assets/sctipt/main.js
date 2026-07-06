@@ -3,7 +3,7 @@ import { categories } from './constants/categories.js';
 import { createCategoryButtons } from './ui/createCategoryButtons.js';
 import { Products } from './products.js';
 
-const mainSection = document.querySelector('main section')
+const mainSection = document.querySelector('.container')
 const productsContainer = document.createElement('div')
 const categoryButtonsContainer = document.createElement('div')
 
