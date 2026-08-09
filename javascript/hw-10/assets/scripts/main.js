@@ -1,6 +1,6 @@
 import { resize } from './baloon.js'
 import { trailElements, createTrail, bgColor } from './trail.js'
-import { asTabs, tabs } from './tabs.js'
+import { tabs } from './tabs.js'
 
 // =============== BALOON ====================
 
@@ -13,8 +13,6 @@ createTrail(trailElements, 15)
 document.addEventListener('click', bgColor)
 
 // =============== TABS ====================
-
-asTabs(tabs)
 
 const buttons = document.querySelectorAll('.btn')
 

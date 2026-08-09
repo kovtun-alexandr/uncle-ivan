@@ -17,7 +17,7 @@ function createButton(data, className) {
     return button
 }
 
-export function asTabs(nodeList) {
+function asTabs(nodeList) {
     nodeList.forEach((tab, index) => {
         if (index === 0) {
             const button = createButton(tab.dataset.tabname, 'active')
@@ -28,3 +28,5 @@ export function asTabs(nodeList) {
         }
     })
 }
+
+asTabs(tabs)
