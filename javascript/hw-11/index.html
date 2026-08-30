@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+    <script type="module" src="./assets/scripts/main.js" defer></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body class="dark-theme">
+    <header>
+        <div class="container header">
+            <div class="logo">
+                <img src="./assets/images/logo.svg" alt="Logo" class="logo-img">
+                <span class="logo-text">Character Counter</span>
+            </div>
+            <button class="toggle-theme">
+                <img src="./assets/images/dark_icon.svg" alt="icon">
+            </button>
+        </div>
+    </header>
+    <main>
+        <section class="container main">
+            <h1 class="title">Analyze your text in real-time.</h1>
+            <form class="analyze-form" action="#">
+                <div class="analyve-row">
+                    <textarea name="text" id="text" placeholder="Start typing here… (or paste your text)"></textarea>
+                </div>
+                <div class="analyze-row">
+                    <div class="analyze-check">
+                        <label for="exclude-spaces">
+                            <input type="checkbox" name="exclude-spaces" id="exclude-spaces" value="">
+                            Exclude spaces
+                        </label>
+                        <label for="character-limit">
+                            <input type="checkbox" name="character-limit" id="character-limit" value="">
+                            Set Character Limit
+                        </label>
+                        <label for="character-count" class="character-count">
+                            <input type="number" name="character" min="0" max="999" id="character-count" value="300"
+                                hidden>
+                        </label>
+                    </div>
+                    <div class="analyze-time">Approx. reading time: <span class="time">0</span> minute</div>
+                </div>
+            </form>
+            <div class="analyze-result">
+                <div class="result-item">
+                    <p class="result-value" id="total-characters">00</p>
+                    <h2 class="result-title">Total Characters</h2>
+                </div>
+                <div class="result-item">
+                    <p class="result-value" id="word-count">00</p>
+                    <h2 class="result-title">Word Count</h2>
+                </div>
+                <div class="result-item">
+                    <p class="result-value" id="sentence-count">00</p>
+                    <h2 class="result-title">Sentence Count</h2>
+                </div>
+                <div class="letter-density">
+                    <h2 class="letter-title">Letter Density</h2>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Oleksandr Kovtun</p>
+    </footer>
+</body>
+
+</html>
