@@ -14,22 +14,10 @@ export function analyzeText(e) {
 
     const textInput = formEl.elements.text
     let text = textInput.value
-    const textareaEl = document.getElementById('text')
 
-    const countLimit = characterLimitChecked(
-        formEl.elements['character-limit'].checked,
-        text,
-        textareaEl
-    )
+    const textForCharacters = excludeSpaces(text)
 
-    if (countLimit) {
-        text = text.slice(0, countLimit)
-    }
-
-    excludeSpaces(
-        formEl.elements['exclude-spaces'].checked,
-        text
-    )
+    characterLimitChecked(textForCharacters)
 
     const wordsCount = countWords(text)
     const sentencesCount = countSentences(text)
@@ -58,36 +46,36 @@ function renderSentencesCount(sentencesCount) {
     renderCount(sentencesCount, sentenceEl)
 }
 
-function characterLimitChecked(checked, text, textarea) {
-    const parentEl = textarea.parentElement
+function characterLimitChecked(text) {
+    const checked = formEl.elements['character-limit'].checked
+    const blockEl = formEl.children[0]
     let characterLimit
+
     if (checked) {
         characterLimit = getLimitValue(checked)
 
-        if (text.length >= characterLimit) {
-            parentEl.classList.add('error')
+        if (text.length > characterLimit) {
+            blockEl.classList.add('error')
 
-            if (!parentEl.lastElementChild?.matches('p')) {
-                const errorEl = document.createElement('p')
+            let errorEl = blockEl.querySelector('p')
 
-                errorEl.textContent = `Limit reached! Your text exceeds ${characterLimit} characters.`
-                parentEl.append(errorEl)
+            if (!errorEl) {
+                errorEl = document.createElement('p')
+
+                blockEl.append(errorEl)
             }
+
+            errorEl.textContent = `Limit reached! Your text exceeds ${characterLimit} characters.`
         } else {
-            removeError(parentEl)
+            removeError(blockEl)
         }
-
-        text = text.slice(0, characterLimit)
-
     } else {
         const inputElement = document.getElementById('character-count')
 
         inputElement.setAttribute("hidden", "")
 
-        removeError(parentEl)
+        removeError(blockEl)
     }
-
-    return characterLimit
 }
 
 function renderLettersDensity(text) {
@@ -154,18 +142,21 @@ function renderReadingTime(wordsCount) {
     }
 }
 
-function excludeSpaces(checked, text) {
+function excludeSpaces(text) {
+    const checked = formEl.elements['exclude-spaces'].checked
     const totalCharacterEl = document.querySelectorAll('.result-item')[0]
     let textEl = totalCharacterEl.lastElementChild
 
     if (checked) {
         text = text.replace(/\s/g, '')
         textEl.innerText = 'Total Characters (no space)'
-        renderCharactersCount(text)
     } else {
         textEl.innerText = 'Total Characters'
-        renderCharactersCount(text)
     }
+
+    renderCharactersCount(text)
+
+    return text
 }
 
 function getLimitValue(checked) {
@@ -175,7 +166,7 @@ function getLimitValue(checked) {
         inputElement.removeAttribute("hidden")
     }
 
-    return inputElement.value
+    return Number(inputElement.value)
 }
 
 function calculateReadingTime(wordsCount) {
@@ -277,10 +268,11 @@ export function expandList() {
 }
 
 function removeError(parentEl) {
-    if (parentEl.lastElementChild?.matches('p')) {
-        const errorEl = parentEl.lastElementChild
+    parentEl.classList.remove('error')
 
-        parentEl.classList.remove('error')
+    const errorEl = parentEl.querySelector('p')
+
+    if (errorEl) {
         errorEl.remove()
     }
 }
