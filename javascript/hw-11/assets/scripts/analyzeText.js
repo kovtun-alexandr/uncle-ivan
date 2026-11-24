@@ -194,11 +194,13 @@ function renderLettersList(object, text) {
 
     lettersListEl.innerHTML = ''
 
+    const totalLetters = (text.match(/\p{L}/gu) || []).length
+
     for (const [letter, count] of object) {
         const letterEl = document.createElement('li')
         const letterElSpan = document.createElement('span')
         const countingEl = document.createElement('span')
-        const percentage = (count / text.length) * 100;
+        const percentage = totalLetters > 0 ? (count / totalLetters) * 100 : 0
 
         letterElSpan.textContent = letter
         countingEl.textContent = `${count} (${percentage.toFixed(2)}%)`
