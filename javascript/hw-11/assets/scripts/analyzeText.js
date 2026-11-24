@@ -131,14 +131,15 @@ function renderReadingTime(wordsCount) {
     const readingTimeEl = document.querySelector('.time')
     const readingTime = calculateReadingTime(wordsCount)
 
-    if (!isNaN(readingTime)) {
-        if (readingTime < 1) {
-            readingTimeEl.textContent = '< 1';
-        } else {
-            readingTimeEl.textContent = `${Math.ceil(readingTime)}`
-        }
+    if (!wordsCount || isNaN(readingTime)) {
+        readingTimeEl.textContent = `0 minutes`
+    } else if (readingTime < 1) {
+        readingTimeEl.textContent = '< 1 minute'
     } else {
-        readingTimeEl.textContent = `0`
+        const minutes = Math.ceil(readingTime)
+        readingTimeEl.textContent = minutes === 1
+            ? '1 minute'
+            : `${minutes} minutes`
     }
 }
 
