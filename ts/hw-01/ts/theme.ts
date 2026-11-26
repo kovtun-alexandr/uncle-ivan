@@ -12,6 +12,6 @@ export function toggleTheme(): void {
     const isDark = document.body.classList.toggle('dark-theme')
 
     iconEl.src = isDark
-        ? './src/assets/images/dark_icon.svg'
-        : './src/assets/images/light_icon.svg'
+        ? './images/dark_icon.svg'
+        : './images/light_icon.svg'
 }
