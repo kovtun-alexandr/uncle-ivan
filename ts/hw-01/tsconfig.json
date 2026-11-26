@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
+        "outDir": "./script",
+        "rootDir": "./ts",
         "target": "es6",
         "module": "commonjs"
     },
     "include": [
-        "src/**/*"
+        "ts"
     ]
 }
