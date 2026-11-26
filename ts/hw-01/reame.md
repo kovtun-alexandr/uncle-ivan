@@ -32,4 +32,4 @@ Regular expressions are used throughout the project for:
 4. A list of letters found in the text is displayed, including the count of each letter and its percentage share.
 
 ### Link to GitHub Pages:
-https://kovtun-alexandr.github.io/uncle-ivan/javascript/hw-11/index.html
+https://kovtun-alexandr.github.io/uncle-ivan/ts/hw-01/index.html
