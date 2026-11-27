@@ -14,7 +14,7 @@ if (textEl?.value === '' && lettersEl) {
 type LetterEntry = [string, number]
 type LettersFrequency = Record<string, number>
 
-export function analyzeText(e: MouseEvent): void {
+export function analyzeText(e: Event): void {
     e.preventDefault()
 
     if (!textEl || !formEl || !lettersEl) return

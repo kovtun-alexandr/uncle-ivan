@@ -1,13 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.themeBtn = void 0;
-exports.toggleTheme = toggleTheme;
 const btn = document.querySelector('.toggle-theme');
 if (!btn)
     throw new Error('Theme toggle button not found');
-exports.themeBtn = btn;
-function toggleTheme() {
-    const iconEl = exports.themeBtn.querySelector('img');
+export const themeBtn = btn;
+export function toggleTheme() {
+    const iconEl = themeBtn.querySelector('img');
     if (!iconEl)
         return;
     const isDark = document.body.classList.toggle('dark-theme');

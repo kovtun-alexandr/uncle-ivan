@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "outDir": "./script",
+        "outDir": "./scripts",
         "rootDir": "./ts",
         "allowJs": true,
         "target": "ES2017",
-        "module": "commonjs"
+        "module": "ES2020",
     },
     "include": [
         "ts"
