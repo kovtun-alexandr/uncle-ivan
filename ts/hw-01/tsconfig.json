@@ -2,7 +2,8 @@
     "compilerOptions": {
         "outDir": "./script",
         "rootDir": "./ts",
-        "target": "es6",
+        "allowJs": true,
+        "target": "ES2017",
         "module": "commonjs"
     },
     "include": [
